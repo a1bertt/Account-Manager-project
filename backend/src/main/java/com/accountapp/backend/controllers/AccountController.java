@@ -40,13 +40,15 @@ public class AccountController
     public @ResponseBody String updateUserWithId(@RequestBody Account account)
     {
         accountRepository.save(account);
-        return "User account:" + account + " has been updated";
+        return "User account: " + account + " has been updated";
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
-    public @ResponseBody String deleteUserWithId(@RequestBody Account account)
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody String deleteUserWithId(@PathVariable("id") Long id)
     {
+        Account account = accountRepository.getById(id);
         accountRepository.delete(account);
-        return "Account:" + account + " has been deleted!";
+        //accountRepository.delete(account);
+        return "Account: " + account + " has been deleted!";
     }
 }
