@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 @RestController()
 @RequestMapping(path = "/backend")
+@CrossOrigin
 public class AccountController
 {
     @Autowired
